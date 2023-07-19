@@ -1,16 +1,17 @@
+import getDomain from "@/lib/getDomain";
 
 //get blog data
 const getData = async () => {
-   /*  //get endpoint
-    const endpoint = 'http://localhost:3000/api/posts';
+    //get endpoint
+    const domain = getDomain();
+    const endpoint = `${domain}/api/posts`;
     const response = await fetch(endpoint);
 
     if(!response.ok){
         throw new Error('Failed to fetch data');
     }
 
-    return response.json(); */
-    return {posts: []};
+    return response.json();
 
 }
 
