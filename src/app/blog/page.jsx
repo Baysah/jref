@@ -5,20 +5,21 @@ import getDomain from "@/lib/getDomain";
 
 //get blog data
 const getData = async () => {
-    //get endpoint
-    const domain = getDomain();
-    const endpoint = `${domain}/api/posts`;
-    const response = await fetch(endpoint, {next: {revalidate: 10}});
+  //get endpoint
+  const domain = getDomain();
+  const endpoint = `${domain}/api/posts`;
+  const response = await fetch(endpoint, { next: { revalidate: 10 } });
 
-    if(!response.ok){
-        throw new Error('Failed to fetch data');
-    }
-    if(response.headers.get('content-type') !== 'application/json'){
-        return {posts: []};
-    }
+  //const response = await fetch(endpoint, {cache: 'no-store'});
 
-    return response.json();
+  if (!response.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  if (response.headers.get('content-type') !== 'application/json') {
+    return { posts: [] };
+  }
 
+  return response.json();
 }
 
 const BlogPage = async() => {
