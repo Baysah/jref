@@ -10,6 +10,9 @@ const getData = async () => {
     if(!response.ok){
         throw new Error('Failed to fetch data');
     }
+    if(response.headers.get('content-type') !== 'application/json'){
+        return {posts: []};
+    }
 
     return response.json();
 
