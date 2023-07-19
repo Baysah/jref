@@ -1,3 +1,4 @@
+import BlogCard from "@/components/BlogCard";
 import getDomain from "@/lib/getDomain";
 
 //fetch caching options
@@ -29,7 +30,7 @@ const BlogPage = async() => {
     <div className="container py-10">
         <ul>
             {posts && posts.map((post, index) => (
-                <li key={`post-${index}`}>{post.title}</li>
+                <BlogCard key={index} title={post.title} />
             ))}
         </ul>
     </div>
