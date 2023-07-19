@@ -13,7 +13,11 @@ export async function GET() {
       {
         id: 3,
         title: 'Hello World 3',
-      }
-    ]
+      },
+      {
+        id: 4,
+        title: 'Hello World 4',
+      },
+    ],
   });
 }
