@@ -1,7 +1,7 @@
 
 //get blog data
 const getData = async () => {
-    //get endpoint
+   /*  //get endpoint
     const endpoint = 'http://localhost:3000/api/posts';
     const response = await fetch(endpoint);
 
@@ -9,7 +9,8 @@ const getData = async () => {
         throw new Error('Failed to fetch data');
     }
 
-    return response.json();
+    return response.json(); */
+    return {posts: []};
 
 }
 
