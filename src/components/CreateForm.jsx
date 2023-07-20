@@ -1,14 +1,17 @@
 'use client'
 
-const CreateForm = () => {
-    const handleFubmit = async (e) => {
-        e.preventDefault();
-        const fortData = new FormData(e.target);
-        const data = Object.fromEntries(fortData);
-        const JSONData = JSON.stringify(data)
-        const endpoint = "/api/links"
-        
+import { useState } from "react";
 
+const CreateForm = () => {
+    const  [results, setResults]  = useState(null);
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        const JSONData = JSON.stringify(data)
+        const endpoint = "/api/links/"
+
+        
         const options = {
             method: 'POST',
             headers: {
@@ -19,10 +22,11 @@ const CreateForm = () => {
         const response = await fetch(endpoint, options)
         const result = await response.json();
         console.log(result);
+        setResults(result)
     }
   return (
     <>
-      <form onSubmit={handleFubmit} className="flex flex-col md:flex-row gap-2">
+      <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-2">
         <input
           type="text"
           name="url"
@@ -37,6 +41,7 @@ const CreateForm = () => {
           Submit
         </button>
       </form>
+      {results && JSON.stringify(results)}
     </>
   );
 }
